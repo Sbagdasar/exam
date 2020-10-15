@@ -19,14 +19,12 @@ init();
 		let pole= ce("form");
 		pole.name = "forma";
 		
-		
-		
 		let table = ce("table");
 		let tr = ce("tr");
 		let td1 = ce("td");
 		let td2 = ce("td");
 		
-		td1.innerHTML = `<label for="text">Введи полиндром</label>`;
+		td1.innerHTML = `<label for="text">Введи число</label>`;
 		
 		
 		let inp = ce("input");
@@ -35,7 +33,7 @@ init();
 		
 		let subm = ce("input");
 		subm.type="submit";
-		subm.value="проверить";
+		subm.value="Найти";
 		
 		document.body.prepend(pole);
 		pole.append(table);
@@ -56,19 +54,16 @@ init();
       
 		let s = elem.value.trim();
 	 
-	  let str = s.split("").reverse();
-	
-		
-		let newStr = str.join("");
-			
-			if(s===newStr && s!=""){
-				alert(s + " Это полиндром");
-				elem.value="";
-			}else{
-				alert(s + " Это не полиндром");
-				elem.value="";
+	  	let arr = s.split("");
+		let max=[];
+	  	for(let i=1;i<arr.length;i++){
+	  		if(arr[i]>arr[i+1] &&arr[i]>arr[i-1]) {
+				max.push(arr[i]);
 			}
-	
+		}
+
+	console.log(arr)
+	console.log(max)
     }
 	
 
