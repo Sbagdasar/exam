@@ -44,26 +44,32 @@ window.onload = function () {
 		tr.append(td2);
 		td2.append(inp);
 		td2.append(subm);
-	}
-	
-	 function getFormInfo(e) {                                                                                    
-        e.preventDefault();                                                                                       
-        let elem = document.querySelector(`#text`);               
-      
-		let s = elem.value.trim();
-	 
-		let str = s.split("").reverse().join("");
-			
-			if(s===str && s!=""){
-				alert(s + " Это полиндром");
-				elem.value="";
-			}else{
-				alert(s + " Это не полиндром");
-				elem.value="";
-			}
-	
-    }
-	
 
+	}
+
+	 function getFormInfo(e) {
+		 e.preventDefault();
+		 let elem = document.querySelector(`#text`);
+
+		 let s = elem.value.trim().toLowerCase();
+		 	s.replace(/[^A-Z0-9]/ig, "");
+
+		 // способ 1
+		 let str = s.split("").reverse().join("");
+
+		 if (s === str && s != "") {
+			 alert(s + "- Это полиндром");
+			 elem.value = "";
+		 } else {
+			 alert(s + "- Это не полиндром");
+			 elem.value = "";
+		 }
+			 // способ 2
+			 /* let st = "";
+			  for(let i=s.length-1;i>=0;i--){
+				 st+=s[i]
+			  }
+			  (s===st)?alert(s + " - это полидром"):alert(s + " - это не полидром");*/
+	 }
    init();
 }

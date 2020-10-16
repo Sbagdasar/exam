@@ -1,7 +1,7 @@
 'use strict'
 window.onload = function () {
 	// zadacha 1
-init();
+init1();
 	function ce(name="div",text,event,fn){
 		let x = document.createElement(name);
 		if(text!=undefined){
@@ -30,6 +30,8 @@ init();
 		let inp = ce("input");
 			inp.name = "text";
 			inp.id = "text";
+			inp.addEventListener("keyup",testKey);
+		//inp.setAttribute("pattern", "\d+");
 		
 		let subm = ce("input");
 		subm.type="submit";
@@ -51,21 +53,47 @@ init();
 	 function getFormInfo(e) {                                                                                    
         e.preventDefault();                                                                                       
         let elem = document.querySelector(`#text`);               
-      
+
 		let s = elem.value.trim();
-	 
-	  	let arr = s.split("");
+
+		let arr = s.split("");
 		let max=[];
-	  	for(let i=1;i<arr.length;i++){
-	  		if(arr[i]>arr[i+1] &&arr[i]>arr[i-1]) {
+		let k=0;
+
+	  	for(let i=0;i<arr.length;i++){
+	  		if(arr[i-1]==undefined && arr[i]>arr[i+1]){
 				max.push(arr[i]);
+				k++;
 			}
+			if(arr[i+1]==undefined && arr[i]>arr[i-1]){
+				max.push(arr[i]);
+				k++;
+			}
+	  		if(arr[i]>arr[i+1] && arr[i]>arr[i-1]) {
+
+
+				max.push(arr[i]) ;
+
+				k++;
+			}
+
 		}
 
-	console.log(arr)
-	console.log(max)
-    }
-	
+		let div = ce('div');
 
+	  	let p = ce('p');
+	  	p.innerHTML = `Локальные максимумы: ${max.join(", ")} Количество локальных максимумов: ${k}`;
+	  	div.append(p);
+	  	document.body.append(div);
+    }
+
+		function testKey(){
+	 		let val = document.querySelector("#text")
+			let testVal=  val.value;
+			if(+testVal!=val.value) {
+				val.value = testVal.substring(0, testVal.length - 1)
+
+			}
+		}
    
 }
