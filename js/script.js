@@ -1,7 +1,3 @@
-'use strict'
-window.onload = function () {
-
-	console.log(111)
 	// zadacha 1
 init1();
 	function ce(name="div",text,event,fn){
@@ -39,8 +35,18 @@ init1();
 		let submZ1 = ce("input");
 		submZ1.type="submit";
 		submZ1.value="Найти";
-		
+
+		let divZ1 = ce('div');
+
+		let pZ1 = ce('p');
+		pZ1.id="vivod";
+
+		divZ1.append(pZ1);
+
+
+
 		document.body.append(poleZ1);
+		document.body.append(divZ1);
 		poleZ1.append(tableZ1);
 		tableZ1.append(trZ1);
 		trZ1.append(td1Z1);
@@ -82,12 +88,9 @@ console.log(elem)
 
 		}
 
-		let divZ1 = ce('div');
+		let viv = document.querySelector("#vivod")
+		 viv.innerHTML = `Локальные максимумы: ${max.join(", ")} Количество локальных максимумов: ${k}`;
 
-	  	let pZ1 = ce('p');
-		 pZ1.innerHTML = `Локальные максимумы: ${max.join(", ")} Количество локальных максимумов: ${k}`;
-		 divZ1.append(pZ1);
-	  	document.body.append(divZ1);
     }
 
 		function testKey(){
@@ -98,5 +101,3 @@ console.log(elem)
 
 			}
 		}
-   
-}
