@@ -1,5 +1,7 @@
 'use strict'
 window.onload = function () {
+
+	console.log(111)
 	// zadacha 1
 init1();
 	function ce(name="div",text,event,fn){
@@ -15,45 +17,46 @@ init1();
 		return x;
 	}
 	
-	function init(){
-		let pole= ce("form");
-		pole.name = "forma";
+	function init1(){
+		let poleZ1= ce("form");
+		poleZ1.name = "formaZ1";
+		poleZ1.id = "formaZ1";
+
+		let tableZ1 = ce("table");
+		let trZ1 = ce("tr");
+		let td1Z1 = ce("td");
+		let td2Z1 = ce("td");
 		
-		let table = ce("table");
-		let tr = ce("tr");
-		let td1 = ce("td");
-		let td2 = ce("td");
-		
-		td1.innerHTML = `<label for="text">Введи число</label>`;
+		td1Z1.innerHTML = `<label for="textZ1">Введи число</label>`;
 		
 		
-		let inp = ce("input");
-			inp.name = "text";
-			inp.id = "text";
-			inp.addEventListener("keyup",testKey);
-		//inp.setAttribute("pattern", "\d+");
+		let inpZ1 = ce("input");
+			inpZ1.name = "textZ1";
+			inpZ1.id = "textZ1";
+			inpZ1.addEventListener("keyup",testKey);
+
 		
-		let subm = ce("input");
-		subm.type="submit";
-		subm.value="Найти";
+		let submZ1 = ce("input");
+		submZ1.type="submit";
+		submZ1.value="Найти";
 		
-		document.body.prepend(pole);
-		pole.append(table);
-		table.append(tr);
-		tr.append(td1);
-		tr.append(td2);
-		td2.append(inp);
-		td2.append(subm);
+		document.body.append(poleZ1);
+		poleZ1.append(tableZ1);
+		tableZ1.append(trZ1);
+		trZ1.append(td1Z1);
+		trZ1.append(td2Z1);
+		td2Z1.append(inpZ1);
+		td2Z1.append(submZ1);
 	}
 	
 	
-	let x = document.querySelector('form');
-	x.addEventListener("submit", getFormInfo);
+	let x = document.querySelector('#formaZ1');
+	x.addEventListener("submit", getFormInfoZ1);
 	
-	 function getFormInfo(e) {                                                                                    
+	 function getFormInfoZ1(e) {
         e.preventDefault();                                                                                       
-        let elem = document.querySelector(`#text`);               
-
+        let elem = document.querySelector(`#textZ1`);
+console.log(elem)
 		let s = elem.value.trim();
 
 		let arr = s.split("");
@@ -79,16 +82,16 @@ init1();
 
 		}
 
-		let div = ce('div');
+		let divZ1 = ce('div');
 
-	  	let p = ce('p');
-	  	p.innerHTML = `Локальные максимумы: ${max.join(", ")} Количество локальных максимумов: ${k}`;
-	  	div.append(p);
-	  	document.body.append(div);
+	  	let pZ1 = ce('p');
+		 pZ1.innerHTML = `Локальные максимумы: ${max.join(", ")} Количество локальных максимумов: ${k}`;
+		 divZ1.append(pZ1);
+	  	document.body.append(divZ1);
     }
 
 		function testKey(){
-	 		let val = document.querySelector("#text")
+	 		let val = document.querySelector("#textZ1")
 			let testVal=  val.value;
 			if(+testVal!=val.value) {
 				val.value = testVal.substring(0, testVal.length - 1)
